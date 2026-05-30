@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <radialGradient id="sky" cx="58%" cy="35%" r="78%">
+      <stop offset="0" stop-color="#123a46"/>
+      <stop offset=".48" stop-color="#071827"/>
+      <stop offset="1" stop-color="#020307"/>
+    </radialGradient>
+    <radialGradient id="earth" cx="40%" cy="35%" r="65%">
+      <stop offset="0" stop-color="#9ff4c8"/>
+      <stop offset=".5" stop-color="#12384a"/>
+      <stop offset="1" stop-color="#07101d"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+    <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="1400" height="900" fill="url(#sky)"/>
+  <rect width="1400" height="900" filter="url(#noise)" opacity=".08"/>
+  <circle cx="1010" cy="214" r="410" fill="#d08f43" opacity=".06"/>
+  
+      <circle cx="1130" cy="205" r="102" fill="#d08f43" opacity=".96"/>
+      <circle cx="1096" cy="172" r="38" fill="#fff2ba" opacity=".55"/>
+      <path d="M1038 274 C776 394 578 494 270 692" stroke="#d08f43" stroke-width="32" opacity=".24" filter="url(#blur)"/>
+      <path d="M1046 262 C740 360 486 472 138 620" stroke="#fff2ba" stroke-width="7" opacity=".5"/>
+      <circle cx="402" cy="714" r="254" fill="url(#earth)" opacity=".94"/>
+      <path d="M190 624 C332 548 486 566 600 668 C512 770 326 800 190 724Z" fill="#132d3e" opacity=".8"/>
+      <path d="M0 782 C188 700 310 684 514 752 C724 822 978 780 1400 688 L1400 900 L0 900Z" fill="#050609" opacity=".92"/>
+    
+  <text x="74" y="818" fill="#d6e8e2" opacity=".2" font-family="serif" font-size="34" letter-spacing="8">LA EXTINCIÓN</text>
+</svg>

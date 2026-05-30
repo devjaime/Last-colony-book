@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <radialGradient id="sky" cx="58%" cy="35%" r="78%">
+      <stop offset="0" stop-color="#142335"/>
+      <stop offset=".48" stop-color="#06111e"/>
+      <stop offset="1" stop-color="#020309"/>
+    </radialGradient>
+    <radialGradient id="earth" cx="40%" cy="35%" r="65%">
+      <stop offset="0" stop-color="#d2a563"/>
+      <stop offset=".5" stop-color="#12384a"/>
+      <stop offset="1" stop-color="#07101d"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+    <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="1400" height="900" fill="url(#sky)"/>
+  <rect width="1400" height="900" filter="url(#noise)" opacity=".08"/>
+  <circle cx="1010" cy="214" r="410" fill="#8fffe0" opacity=".06"/>
+  
+      <circle cx="1032" cy="220" r="182" fill="#d8dde0" opacity=".9"/>
+      <circle cx="974" cy="168" r="34" fill="#9ca3aa" opacity=".45"/>
+      <circle cx="1110" cy="264" r="50" fill="#8a9298" opacity=".25"/>
+      <path d="M0 706 C240 620 450 650 670 596 C904 540 1086 520 1400 564 L1400 900 L0 900Z" fill="#d8dde0" opacity=".86"/>
+      <path d="M0 758 C296 686 442 734 690 686 C960 636 1136 654 1400 688 L1400 900 L0 900Z" fill="#080b0e"/>
+      <g stroke="#8fffe0" fill="none">
+        <path d="M388 626 L506 430 L624 626" stroke-width="7" opacity=".75"/>
+        <path d="M506 430 C622 324 728 320 842 430" stroke-width="4" opacity=".35"/>
+        <path d="M506 430 C684 224 900 226 1066 428" stroke-width="3" opacity=".24"/>
+        <path d="M270 324 C346 290 420 290 494 324 C570 358 644 358 720 324 C796 290 870 290 946 324" stroke-width="5" opacity=".5"/>
+      </g>
+    
+  <text x="74" y="818" fill="#d6e8e2" opacity=".2" font-family="serif" font-size="34" letter-spacing="8">LA SEÑAL</text>
+</svg>
