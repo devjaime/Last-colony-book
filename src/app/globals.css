@@ -74,6 +74,38 @@ a {
   animation: rift-vibration 7s infinite steps(2, jump-none);
 }
 
+.intro-cover {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(140, 255, 213, 0.22);
+  background: #020407;
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.62),
+    0 0 54px rgba(140, 255, 213, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transform-style: preserve-3d;
+}
+
+.intro-cover::before,
+.intro-cover::after {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  content: "";
+  pointer-events: none;
+}
+
+.intro-cover::before {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.18), transparent 10%, transparent 88%, rgba(0, 0, 0, 0.35)),
+    radial-gradient(circle at 50% 30%, transparent 36%, rgba(0, 0, 0, 0.18));
+}
+
+.intro-cover::after {
+  border: 1px solid rgba(208, 143, 67, 0.22);
+  inset: 0.65rem;
+}
+
 .chapter-section::before {
   position: absolute;
   inset: 0;
@@ -227,11 +259,28 @@ a {
   color: #f2ead9;
 }
 
+.book-page-cover .book-plate {
+  min-height: clamp(15rem, 42vh, 25rem);
+  border-color: rgba(140, 255, 213, 0.24);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.38),
+    inset 0 0 52px rgba(0, 0, 0, 0.5);
+}
+
 .book-page-cover h2,
 .book-page-cover p,
 .book-page-cover blockquote,
 .book-page-cover span {
   color: inherit;
+}
+
+.book-page-cover a {
+  color: #c7fff0;
+}
+
+.book-page-cover span {
+  border-color: rgba(140, 255, 213, 0.22);
+  background: rgba(140, 255, 213, 0.08);
 }
 
 .book-page-cover .book-page-no,

@@ -7,7 +7,7 @@ export const englishBookPages: BookPage[] = [
     kind: "cover",
     eyebrow: "The Last Colony",
     title: "The Greys Are Not UFOs",
-    image: "/visuals/contacto.svg",
+    image: "/visuals/cover-art.svg",
     quote: "They are a colony intelligence born on Earth. They survived the first impact. Now they watch us.",
     body: [
       "Under the Shadow of the Impact: The Intelligence of Chicxulub.",

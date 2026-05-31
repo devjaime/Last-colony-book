@@ -2,11 +2,13 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { bookPages } from "@/data/book-pages";
 import { englishBookPages } from "@/data/book-pages-en";
 import { chapters } from "@/data/chapters";
+import { getLocaleFromSearch, getLocalePath, type Locale } from "@/lib/locale";
 import { useReadingStore } from "@/store/reading-store";
 import type { BookPage } from "@/types/narrative";
 
@@ -24,18 +26,25 @@ function useIsMobile() {
   return isMobile;
 }
 
-function useLocale() {
-  const [locale, setLocale] = useState<"es" | "en">("es");
+function useLocale(initialLocale: Locale) {
+  const [locale, setLocale] = useState<Locale>(initialLocale);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setLocale(params.get("lang") === "en" ? "en" : "es");
+    const searchLocale = getLocaleFromSearch(window.location.search);
+    const storedLocale = window.localStorage.getItem("the-last-colony-locale");
+    const nextLocale = window.location.search.includes("lang=")
+      ? searchLocale
+      : storedLocale === "en"
+        ? "en"
+        : "es";
+    setLocale(nextLocale);
+    window.localStorage.setItem("the-last-colony-locale", nextLocale);
   }, []);
 
   return locale;
 }
 
-function PageContent({ page, pageNumber }: { page: BookPage; pageNumber: number }) {
+function PageContent({ page, pageNumber, locale }: { page: BookPage; pageNumber: number; locale: Locale }) {
   const chapter = chapters.find((item) => item.id === page.chapterId);
 
   return (
@@ -96,7 +105,7 @@ function PageContent({ page, pageNumber }: { page: BookPage; pageNumber: number 
 
         {page.mediaCredit ? (
           <p className="mt-4 border-t border-stone-900/10 pt-3 font-space text-[0.56rem] uppercase tracking-[0.14em] text-stone-900/45">
-            Fuente visual:{" "}
+            {locale === "en" ? "Visual source" : "Fuente visual"}:{" "}
             {page.sourceUrl ? (
               <a href={page.sourceUrl} target="_blank" rel="noreferrer" className="underline decoration-stone-900/25">
                 {page.mediaCredit}
@@ -111,9 +120,9 @@ function PageContent({ page, pageNumber }: { page: BookPage; pageNumber: number 
   );
 }
 
-export function BookReader() {
+export function BookReader({ initialLocale }: { initialLocale: Locale }) {
   const isMobile = useIsMobile();
-  const locale = useLocale();
+  const locale = useLocale(initialLocale);
   const currentPageIndex = useReadingStore((state) => state.currentPageIndex);
   const setCurrentPageIndex = useReadingStore((state) => state.setCurrentPageIndex);
   const setActiveChapter = useReadingStore((state) => state.setActiveChapter);
@@ -174,11 +183,57 @@ export function BookReader() {
               {locale === "en" ? "The Greys Are Not UFOs" : "Los grises no son OVNIs"}
             </h1>
           </div>
-          <p className="hidden max-w-sm text-right text-xs leading-5 text-slate-300/55 sm:block">
-            {locale === "en"
-              ? "A terrestrial colony intelligence that survived Chicxulub and reaches the present."
-              : "Hormigas del centro de la Tierra que sobrevivieron a Chicxulub y llegan hasta la actualidad."}
-          </p>
+          <div className="hidden flex-col items-end gap-3 sm:flex">
+            <div className="flex gap-2 font-space text-[0.58rem] uppercase tracking-[0.2em]">
+              <Link
+                href={getLocalePath("es")}
+                className={`border px-3 py-2 transition ${
+                  locale === "es"
+                    ? "border-emerald-100/45 bg-emerald-100/10 text-emerald-50"
+                    : "border-white/12 text-white/42 hover:border-white/30 hover:text-white/70"
+                }`}
+              >
+                ES
+              </Link>
+              <Link
+                href={getLocalePath("en")}
+                className={`border px-3 py-2 transition ${
+                  locale === "en"
+                    ? "border-emerald-100/45 bg-emerald-100/10 text-emerald-50"
+                    : "border-white/12 text-white/42 hover:border-white/30 hover:text-white/70"
+                }`}
+              >
+                EN
+              </Link>
+            </div>
+            <p className="max-w-sm text-right text-xs leading-5 text-slate-300/55">
+              {locale === "en"
+                ? "A terrestrial colony intelligence that survived Chicxulub and reaches the present."
+                : "Hormigas del centro de la Tierra que sobrevivieron a Chicxulub y llegan hasta la actualidad."}
+            </p>
+          </div>
+        </div>
+        <div className="mb-4 flex gap-2 font-space text-[0.58rem] uppercase tracking-[0.2em] sm:hidden">
+          <Link
+            href={getLocalePath("es")}
+            className={`border px-3 py-2 transition ${
+              locale === "es"
+                ? "border-emerald-100/45 bg-emerald-100/10 text-emerald-50"
+                : "border-white/12 text-white/42"
+            }`}
+          >
+            ES
+          </Link>
+          <Link
+            href={getLocalePath("en")}
+            className={`border px-3 py-2 transition ${
+              locale === "en"
+                ? "border-emerald-100/45 bg-emerald-100/10 text-emerald-50"
+                : "border-white/12 text-white/42"
+            }`}
+          >
+            EN
+          </Link>
         </div>
 
         <div className="mb-5 flex flex-col gap-3 border border-emerald-100/12 bg-black/28 px-4 py-3 text-slate-200/72 backdrop-blur-md sm:flex-row sm:items-center sm:justify-between">
@@ -220,7 +275,7 @@ export function BookReader() {
               className="book-spread"
             >
               {visiblePages.map((page, index) => (
-                <PageContent key={page.id} page={page} pageNumber={normalizedIndex + index + 1} />
+                <PageContent key={page.id} page={page} pageNumber={normalizedIndex + index + 1} locale={locale} />
               ))}
               {!isMobile && visiblePages.length === 1 ? <div className="book-page book-page-blank" /> : null}
             </motion.div>

@@ -7,7 +7,7 @@ export const bookPages: BookPage[] = [
     kind: "cover",
     eyebrow: "The Last Colony",
     title: "Los grises no son OVNIs",
-    image: "/visuals/contacto.svg",
+    image: "/visuals/cover-art.svg",
     quote: "Son una inteligencia de colonia nacida en la Tierra. Sobrevivieron al primer impacto. Ahora nos observan.",
     body: [
       "Bajo la Sombra del Impacto: La Inteligencia de Chicxulub.",

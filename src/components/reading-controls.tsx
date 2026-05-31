@@ -2,9 +2,10 @@
 
 import { RotateCcw, Volume2, VolumeX } from "lucide-react";
 import { chapters } from "@/data/chapters";
+import type { Locale } from "@/lib/locale";
 import { useReadingStore } from "@/store/reading-store";
 
-export function ReadingControls() {
+export function ReadingControls({ initialLocale }: { initialLocale: Locale }) {
   const activeChapterId = useReadingStore((state) => state.activeChapterId);
   const audioEnabled = useReadingStore((state) => state.audioEnabled);
   const progress = useReadingStore((state) => state.progress);
@@ -30,8 +31,24 @@ export function ReadingControls() {
         <div className="pointer-events-auto ml-auto flex items-center gap-2 rounded-full border border-white/10 bg-black/45 p-1.5 backdrop-blur-md">
           <button
             type="button"
-            aria-label={audioEnabled ? "Silenciar audio" : "Escuchar muestra de audio"}
-            title={audioEnabled ? "Silenciar audio" : "Escuchar muestra de audio"}
+            aria-label={
+              audioEnabled
+                ? initialLocale === "en"
+                  ? "Mute audio"
+                  : "Silenciar audio"
+                : initialLocale === "en"
+                  ? "Play audio sample"
+                  : "Escuchar muestra de audio"
+            }
+            title={
+              audioEnabled
+                ? initialLocale === "en"
+                  ? "Mute audio"
+                  : "Silenciar audio"
+                : initialLocale === "en"
+                  ? "Play audio sample"
+                  : "Escuchar muestra de audio"
+            }
             onClick={() => setAudioEnabled(!audioEnabled)}
             className="grid size-10 place-items-center rounded-full text-white/75 transition hover:bg-white/10 hover:text-white"
           >
@@ -39,8 +56,8 @@ export function ReadingControls() {
           </button>
           <button
             type="button"
-            aria-label="Reiniciar lectura"
-            title="Reiniciar lectura"
+            aria-label={initialLocale === "en" ? "Restart reading" : "Reiniciar lectura"}
+            title={initialLocale === "en" ? "Restart reading" : "Reiniciar lectura"}
             onClick={() => {
               reset();
               window.scrollTo({ top: 0, behavior: "smooth" });

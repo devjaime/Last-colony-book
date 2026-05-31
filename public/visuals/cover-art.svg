@@ -1,0 +1,107 @@
+<svg width="1200" height="1600" viewBox="0 0 1200 1600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="impactGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(608 238) rotate(90) scale(336 560)">
+      <stop stop-color="#F6D08B"/>
+      <stop offset="0.22" stop-color="#D86B35"/>
+      <stop offset="0.48" stop-color="#193B3A"/>
+      <stop offset="1" stop-color="#020407"/>
+    </radialGradient>
+    <radialGradient id="bioGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(598 1024) rotate(90) scale(362 430)">
+      <stop stop-color="#B9FFE9"/>
+      <stop offset="0.28" stop-color="#2AD6AE"/>
+      <stop offset="0.7" stop-color="#09312F"/>
+      <stop offset="1" stop-color="#020407"/>
+    </radialGradient>
+    <linearGradient id="cave" x1="600" y1="518" x2="600" y2="1450" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#090A0B"/>
+      <stop offset="0.38" stop-color="#0B2528"/>
+      <stop offset="0.74" stop-color="#031414"/>
+      <stop offset="1" stop-color="#020407"/>
+    </linearGradient>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.18"/>
+      </feComponentTransfer>
+      <feBlend mode="overlay" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="1600" fill="#020407"/>
+  <rect width="1200" height="1600" fill="url(#impactGlow)" opacity="0.9"/>
+  <path d="M0 528C186 434 330 396 486 430C645 465 748 575 898 586C1023 595 1110 536 1200 458V1600H0V528Z" fill="url(#cave)"/>
+  <path d="M0 688C154 598 284 594 396 652C520 715 555 811 656 827C792 849 923 702 1200 704V1600H0V688Z" fill="#050909" opacity="0.72"/>
+
+  <g filter="url(#softGlow)">
+    <path d="M798 70L900 210L815 183L910 346L690 122L762 141L716 24L798 70Z" fill="#F47E3C"/>
+    <path d="M785 91L852 188L801 171L850 266L724 118L769 132L747 65L785 91Z" fill="#FFE0A4"/>
+  </g>
+
+  <g opacity="0.78">
+    <path d="M0 496C176 414 334 378 517 419C702 460 781 573 957 572C1060 572 1134 532 1200 493V604C1060 668 933 674 793 635C656 597 570 504 424 487C298 472 164 512 0 600V496Z" fill="#3D1C12"/>
+    <path d="M0 552C200 458 372 451 511 491C647 531 734 625 864 633C1001 641 1110 572 1200 528V660C1078 720 958 747 817 706C657 659 598 570 452 547C314 525 190 567 0 682V552Z" fill="#0A1718"/>
+  </g>
+
+  <g opacity="0.88">
+    <path d="M158 940C257 806 363 765 472 826C524 856 545 898 600 897C662 897 691 840 758 814C862 775 961 827 1048 946C927 881 835 875 765 922C701 965 681 1046 600 1046C521 1046 502 969 436 926C360 876 266 884 158 940Z" fill="#082327"/>
+    <path d="M132 1170C246 1024 356 991 465 1057C523 1092 546 1151 606 1151C672 1151 694 1088 763 1052C872 996 984 1048 1072 1180C925 1128 829 1138 756 1199C696 1249 675 1324 602 1324C532 1324 503 1251 444 1202C369 1140 271 1128 132 1170Z" fill="#061717"/>
+  </g>
+
+  <g filter="url(#softGlow)">
+    <ellipse cx="600" cy="1052" rx="178" ry="232" fill="url(#bioGlow)" opacity="0.48"/>
+    <path d="M600 820C680 914 711 1026 692 1155C680 1236 645 1307 600 1364C556 1307 520 1236 508 1155C489 1026 520 914 600 820Z" fill="#A9FFE7" opacity="0.11"/>
+    <path d="M600 902C634 935 650 987 650 1054C650 1127 627 1186 600 1226C573 1186 550 1127 550 1054C550 987 566 935 600 902Z" fill="#D6FFF2" opacity="0.52"/>
+  </g>
+
+  <g opacity="0.95">
+    <g transform="translate(596 1016)">
+      <ellipse cx="0" cy="-82" rx="42" ry="54" fill="#C9FFF0"/>
+      <path d="M-47 -9C-39 -61 -18 -84 0 -84C18 -84 39 -61 47 -9C58 62 31 126 0 126C-31 126 -58 62 -47 -9Z" fill="#93E7D5"/>
+      <ellipse cx="-15" cy="-88" rx="9" ry="15" fill="#031013"/>
+      <ellipse cx="15" cy="-88" rx="9" ry="15" fill="#031013"/>
+      <path d="M-11 -52C-3 -45 4 -45 12 -52" stroke="#05282B" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <g transform="translate(456 1110) scale(0.72)" opacity="0.68">
+      <ellipse cx="0" cy="-82" rx="42" ry="54" fill="#B8F9EA"/>
+      <path d="M-47 -9C-39 -61 -18 -84 0 -84C18 -84 39 -61 47 -9C58 62 31 126 0 126C-31 126 -58 62 -47 -9Z" fill="#7CD6C4"/>
+      <ellipse cx="-15" cy="-88" rx="9" ry="15" fill="#031013"/>
+      <ellipse cx="15" cy="-88" rx="9" ry="15" fill="#031013"/>
+    </g>
+    <g transform="translate(744 1110) scale(0.72)" opacity="0.68">
+      <ellipse cx="0" cy="-82" rx="42" ry="54" fill="#B8F9EA"/>
+      <path d="M-47 -9C-39 -61 -18 -84 0 -84C18 -84 39 -61 47 -9C58 62 31 126 0 126C-31 126 -58 62 -47 -9Z" fill="#7CD6C4"/>
+      <ellipse cx="-15" cy="-88" rx="9" ry="15" fill="#031013"/>
+      <ellipse cx="15" cy="-88" rx="9" ry="15" fill="#031013"/>
+    </g>
+  </g>
+
+  <g opacity="0.72" stroke="#49E6C1" stroke-width="8" stroke-linecap="round">
+    <path d="M182 1086C262 1010 342 994 424 1038"/>
+    <path d="M1018 1086C938 1010 858 994 776 1038"/>
+    <path d="M218 1318C349 1261 463 1278 560 1368"/>
+    <path d="M982 1318C851 1261 737 1278 640 1368"/>
+  </g>
+
+  <g opacity="0.65">
+    <path d="M0 1435C166 1378 318 1380 460 1428C548 1458 655 1459 744 1429C886 1382 1035 1377 1200 1437V1600H0V1435Z" fill="#020407"/>
+    <rect x="425" y="1394" width="22" height="80" fill="#111819"/>
+    <rect x="459" y="1358" width="34" height="116" fill="#111819"/>
+    <rect x="510" y="1378" width="26" height="96" fill="#111819"/>
+    <rect x="552" y="1330" width="42" height="144" fill="#111819"/>
+    <rect x="610" y="1362" width="30" height="112" fill="#111819"/>
+    <rect x="660" y="1346" width="36" height="128" fill="#111819"/>
+    <rect x="718" y="1386" width="24" height="88" fill="#111819"/>
+  </g>
+
+  <rect x="46" y="44" width="1108" height="1512" stroke="#8CFFD5" stroke-opacity="0.16" stroke-width="2"/>
+  <rect x="82" y="82" width="1036" height="1440" stroke="#D08F43" stroke-opacity="0.12" stroke-width="2"/>
+  <rect width="1200" height="1600" filter="url(#grain)" opacity="0.18"/>
+</svg>
