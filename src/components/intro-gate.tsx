@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useReadingStore } from "@/store/reading-store";
 
@@ -55,7 +56,7 @@ export function IntroGate() {
           transition={{ delay: 1.45, duration: 0.8 }}
           className="mt-8 flex flex-wrap justify-center gap-3 font-space text-[0.68rem] uppercase tracking-[0.24em]"
         >
-          <a
+          <Link
             href="/?lang=es"
             className={`border px-4 py-2 transition ${
               locale === "es"
@@ -64,8 +65,8 @@ export function IntroGate() {
             }`}
           >
             Español
-          </a>
-          <a
+          </Link>
+          <Link
             href="/?lang=en"
             className={`border px-4 py-2 transition ${
               locale === "en"
@@ -74,7 +75,7 @@ export function IntroGate() {
             }`}
           >
             English
-          </a>
+          </Link>
           <a
             href="https://www.war.gov/UFO/"
             target="_blank"
