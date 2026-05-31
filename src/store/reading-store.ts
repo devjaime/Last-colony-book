@@ -53,7 +53,7 @@ export const useReadingStore = create<ReadingState>()(
     }),
     {
       name: "the-last-colony-reading-state",
-      version: 2,
+      version: 3,
       migrate: (persistedState) => {
         const state = persistedState as Partial<ReadingState>;
         return {

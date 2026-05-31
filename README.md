@@ -36,8 +36,12 @@ npm run assets
 
 El proyecto está listo para importarse en Vercel como aplicación Next.js.
 
+- Root Directory: `./`
+- Framework Preset: `Next.js`
 - Build command: `npm run build`
 - Output: automático por Next.js
-- Install command: `npm install`
+- Install command: `npm ci`
 
 No requiere variables de entorno para el MVP.
+
+Si Vercel muestra `404: NOT_FOUND` al abrir la URL, revisar primero que el deployment exista y haya terminado en estado `Ready`. En el import del repositorio debe usarse la rama `main` y la raíz del proyecto, no la carpeta `src`.

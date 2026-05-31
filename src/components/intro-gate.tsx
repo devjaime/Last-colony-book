@@ -1,10 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useReadingStore } from "@/store/reading-store";
 
 export function IntroGate() {
   const completeIntro = useReadingStore((state) => state.completeIntro);
+  const [locale, setLocale] = useState<"es" | "en">("es");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setLocale(params.get("lang") === "en" ? "en" : "es");
+  }, []);
 
   return (
     <motion.section
@@ -22,7 +29,7 @@ export function IntroGate() {
         className="relative flex max-w-3xl flex-col items-center"
       >
         <p className="mb-7 text-[0.68rem] uppercase tracking-[0.45em] text-emerald-100/50">
-          Expediente recuperado
+          {locale === "en" ? "Recovered dossier" : "Expediente recuperado"}
         </p>
         <motion.h1
           initial={{ opacity: 0, filter: "blur(18px)" }}
@@ -30,7 +37,7 @@ export function IntroGate() {
           transition={{ delay: 0.45, duration: 1.6 }}
           className="font-cinzel text-4xl leading-tight text-stone-100 sm:text-6xl lg:text-7xl"
         >
-          Los grises no venían del cielo...
+          {locale === "en" ? "The greys did not come from the sky..." : "Los grises no venían del cielo..."}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
@@ -38,8 +45,45 @@ export function IntroGate() {
           transition={{ delay: 1.25, duration: 1 }}
           className="mt-7 max-w-xl text-sm leading-7 text-slate-300/68 sm:text-base"
         >
-          Eran una colonia terrestre. Sobrevivieron al impacto. Y llevan millones de años observándonos desde abajo.
+          {locale === "en"
+            ? "They were a terrestrial colony. They survived the impact. And they have watched us from below for millions of years."
+            : "Eran una colonia terrestre. Sobrevivieron al impacto. Y llevan millones de años observándonos desde abajo."}
         </motion.p>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.45, duration: 0.8 }}
+          className="mt-8 flex flex-wrap justify-center gap-3 font-space text-[0.68rem] uppercase tracking-[0.24em]"
+        >
+          <a
+            href="/?lang=es"
+            className={`border px-4 py-2 transition ${
+              locale === "es"
+                ? "border-emerald-100/60 bg-emerald-100/12 text-emerald-50"
+                : "border-white/14 text-white/55 hover:border-white/35 hover:text-white"
+            }`}
+          >
+            Español
+          </a>
+          <a
+            href="/?lang=en"
+            className={`border px-4 py-2 transition ${
+              locale === "en"
+                ? "border-emerald-100/60 bg-emerald-100/12 text-emerald-50"
+                : "border-white/14 text-white/55 hover:border-white/35 hover:text-white"
+            }`}
+          >
+            English
+          </a>
+          <a
+            href="https://www.war.gov/UFO/"
+            target="_blank"
+            rel="noreferrer"
+            className="border border-amber-100/20 px-4 py-2 text-amber-50/65 transition hover:border-amber-100/45 hover:text-amber-50"
+          >
+            {locale === "en" ? "Official UAP files" : "Archivos UAP oficiales"}
+          </a>
+        </motion.div>
         <motion.button
           type="button"
           initial={{ opacity: 0, y: 12 }}
@@ -54,7 +98,7 @@ export function IntroGate() {
           }}
           className="mt-12 border border-emerald-200/40 bg-emerald-100/8 px-7 py-4 font-space text-xs uppercase tracking-[0.32em] text-emerald-50 shadow-[0_0_42px_rgba(140,255,213,0.12)] transition hover:border-emerald-100/75 hover:bg-emerald-100/15"
         >
-          Comenzar Lectura
+          {locale === "en" ? "Begin Reading" : "Comenzar Lectura"}
         </motion.button>
       </motion.div>
     </motion.section>

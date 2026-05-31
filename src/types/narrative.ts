@@ -32,8 +32,6 @@ export type BookPage = {
   title: string;
   body: string[];
   image?: string;
-  video?: string;
-  poster?: string;
   mediaCaption?: string;
   mediaCredit?: string;
   sourceUrl?: string;

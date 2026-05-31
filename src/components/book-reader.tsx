@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { bookPages } from "@/data/book-pages";
+import { englishBookPages } from "@/data/book-pages-en";
 import { chapters } from "@/data/chapters";
 import { useReadingStore } from "@/store/reading-store";
 import type { BookPage } from "@/types/narrative";
@@ -23,6 +24,17 @@ function useIsMobile() {
   return isMobile;
 }
 
+function useLocale() {
+  const [locale, setLocale] = useState<"es" | "en">("es");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setLocale(params.get("lang") === "en" ? "en" : "es");
+  }, []);
+
+  return locale;
+}
+
 function PageContent({ page, pageNumber }: { page: BookPage; pageNumber: number }) {
   const chapter = chapters.find((item) => item.id === page.chapterId);
 
@@ -38,27 +50,7 @@ function PageContent({ page, pageNumber }: { page: BookPage; pageNumber: number 
           ) : null}
         </div>
 
-        {page.video ? (
-          <figure className="mb-5">
-            <div className="book-plate">
-              <video
-                className="h-full w-full object-cover"
-                src={page.video}
-                poster={page.poster}
-                controls
-                muted
-                loop
-                playsInline
-                preload="metadata"
-              />
-            </div>
-            {page.mediaCaption ? (
-              <figcaption className="mt-2 font-space text-[0.58rem] uppercase tracking-[0.16em] text-stone-900/48">
-                {page.mediaCaption}
-              </figcaption>
-            ) : null}
-          </figure>
-        ) : page.image ? (
+        {page.image ? (
           <figure className="mb-5">
             <div className="book-plate">
               <Image src={page.image} alt="" fill sizes="(max-width: 760px) 86vw, 42vw" className="object-cover" />
@@ -121,27 +113,35 @@ function PageContent({ page, pageNumber }: { page: BookPage; pageNumber: number 
 
 export function BookReader() {
   const isMobile = useIsMobile();
+  const locale = useLocale();
   const currentPageIndex = useReadingStore((state) => state.currentPageIndex);
   const setCurrentPageIndex = useReadingStore((state) => state.setCurrentPageIndex);
   const setActiveChapter = useReadingStore((state) => state.setActiveChapter);
   const setProgress = useReadingStore((state) => state.setProgress);
   const introCompleted = useReadingStore((state) => state.introCompleted);
 
+  const pages = locale === "en" ? englishBookPages : bookPages;
   const pageStep = isMobile ? 1 : 2;
   const normalizedIndex = isMobile ? currentPageIndex : currentPageIndex - (currentPageIndex % 2);
   const visiblePages = useMemo(
-    () => bookPages.slice(normalizedIndex, normalizedIndex + pageStep),
-    [normalizedIndex, pageStep],
+    () => pages.slice(normalizedIndex, normalizedIndex + pageStep),
+    [normalizedIndex, pageStep, pages],
   );
 
   const canGoBack = normalizedIndex > 0;
-  const canGoNext = normalizedIndex + pageStep < bookPages.length;
+  const canGoNext = normalizedIndex + pageStep < pages.length;
 
   useEffect(() => {
-    const page = bookPages[Math.min(normalizedIndex, bookPages.length - 1)];
+    if (currentPageIndex >= pages.length) {
+      setCurrentPageIndex(0);
+    }
+  }, [currentPageIndex, pages.length, setCurrentPageIndex]);
+
+  useEffect(() => {
+    const page = pages[Math.min(normalizedIndex, pages.length - 1)];
     setActiveChapter(page.chapterId);
-    setProgress(bookPages.length > 1 ? normalizedIndex / (bookPages.length - 1) : 0);
-  }, [normalizedIndex, setActiveChapter, setProgress]);
+    setProgress(pages.length > 1 ? normalizedIndex / (pages.length - 1) : 0);
+  }, [normalizedIndex, pages, setActiveChapter, setProgress]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -149,7 +149,7 @@ export function BookReader() {
         return;
       }
       if (event.key === "ArrowRight" && canGoNext) {
-        setCurrentPageIndex(Math.min(bookPages.length - 1, normalizedIndex + pageStep));
+        setCurrentPageIndex(Math.min(pages.length - 1, normalizedIndex + pageStep));
       }
       if (event.key === "ArrowLeft" && canGoBack) {
         setCurrentPageIndex(Math.max(0, normalizedIndex - pageStep));
@@ -157,7 +157,7 @@ export function BookReader() {
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [canGoBack, canGoNext, introCompleted, normalizedIndex, pageStep, setCurrentPageIndex]);
+  }, [canGoBack, canGoNext, introCompleted, normalizedIndex, pageStep, pages.length, setCurrentPageIndex]);
 
   return (
     <section id="libro" className="relative min-h-svh overflow-hidden px-4 pb-10 pt-24 sm:px-6">
@@ -168,21 +168,24 @@ export function BookReader() {
         <div className="mb-4 flex items-end justify-between gap-4">
           <div>
             <p className="font-space text-[0.66rem] uppercase tracking-[0.36em] text-emerald-100/48">
-              Escrito por Jaime Hernandez
+              {locale === "en" ? "Written by Jaime Hernandez" : "Escrito por Jaime Hernandez"}
             </p>
             <h1 className="mt-2 max-w-4xl font-cinzel text-2xl leading-tight text-stone-100 sm:text-4xl">
-              Los grises no son OVNIs
+              {locale === "en" ? "The Greys Are Not UFOs" : "Los grises no son OVNIs"}
             </h1>
           </div>
           <p className="hidden max-w-sm text-right text-xs leading-5 text-slate-300/55 sm:block">
-            Hormigas del centro de la Tierra que sobrevivieron a Chicxulub y llegan hasta la actualidad.
+            {locale === "en"
+              ? "A terrestrial colony intelligence that survived Chicxulub and reaches the present."
+              : "Hormigas del centro de la Tierra que sobrevivieron a Chicxulub y llegan hasta la actualidad."}
           </p>
         </div>
 
         <div className="mb-5 flex flex-col gap-3 border border-emerald-100/12 bg-black/28 px-4 py-3 text-slate-200/72 backdrop-blur-md sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-3xl text-sm leading-6">
-            Si este expediente te intrigó, puedes hacer un aporte voluntario para extender el libro, sumar más
-            capítulos, arte, investigación visual y agradecimientos a lectores.
+            {locale === "en"
+              ? "If this dossier intrigued you, you can make a voluntary contribution to extend the book with more chapters, art, visual research, and reader acknowledgements."
+              : "Si este expediente te intrigó, puedes hacer un aporte voluntario para extender el libro, sumar más capítulos, arte, investigación visual y agradecimientos a lectores."}
           </p>
           <a
             href="https://www.paypal.com/ncp/payment/ER9ESYAZ6TPRN"
@@ -191,7 +194,7 @@ export function BookReader() {
             className="inline-flex shrink-0 items-center justify-center gap-2 border border-amber-200/35 bg-amber-200/10 px-4 py-3 font-space text-[0.66rem] uppercase tracking-[0.22em] text-amber-50 transition hover:border-amber-100/70 hover:bg-amber-200/18"
           >
             <Heart size={15} />
-            Aporte voluntario
+            {locale === "en" ? "Voluntary support" : "Aporte voluntario"}
           </a>
         </div>
 
@@ -227,7 +230,7 @@ export function BookReader() {
             type="button"
             aria-label="Página siguiente"
             disabled={!canGoNext}
-            onClick={() => setCurrentPageIndex(Math.min(bookPages.length - 1, normalizedIndex + pageStep))}
+            onClick={() => setCurrentPageIndex(Math.min(pages.length - 1, normalizedIndex + pageStep))}
             className="book-nav book-nav-right"
           >
             <ChevronRight size={22} />
@@ -236,9 +239,18 @@ export function BookReader() {
 
         <div className="mt-5 flex items-center justify-between gap-4 font-space text-[0.68rem] uppercase tracking-[0.22em] text-white/48">
           <span>
-            Página {Math.min(normalizedIndex + 1, bookPages.length)} de {bookPages.length}
+            {locale === "en" ? "Page" : "Página"} {Math.min(normalizedIndex + 1, pages.length)}{" "}
+            {locale === "en" ? "of" : "de"} {pages.length}
           </span>
-          <span>{canGoNext ? "Siguiente: abrir otra hoja" : "Fin del archivo disponible"}</span>
+          <span>
+            {canGoNext
+              ? locale === "en"
+                ? "Next: turn the page"
+                : "Siguiente: abrir otra hoja"
+              : locale === "en"
+                ? "End of available archive"
+                : "Fin del archivo disponible"}
+          </span>
         </div>
       </div>
     </section>
