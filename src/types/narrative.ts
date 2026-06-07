@@ -24,6 +24,12 @@ export type Chapter = {
 
 export type BookPageKind = "cover" | "scene" | "dossier" | "transcript" | "evidence" | "manifesto";
 
+export type NarrativeLink = {
+  label: string;
+  url: string;
+  note?: string;
+};
+
 export type BookPage = {
   id: string;
   chapterId: string;
@@ -35,6 +41,7 @@ export type BookPage = {
   mediaCaption?: string;
   mediaCredit?: string;
   sourceUrl?: string;
+  links?: NarrativeLink[];
   quote?: string;
   evidence?: string[];
 };

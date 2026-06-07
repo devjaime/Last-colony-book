@@ -125,6 +125,13 @@ export const englishBookPages: BookPage[] = [
       "The fictional premise shifts the direction: the greys are not craft or visitors, but explorers of an earlier terrestrial intelligence mistaken for aliens because humanity did not know how to look down.",
     ],
     evidence: ["Public record", "Unresolved UAP", "Speculative fiction"],
+    links: [
+      {
+        label: "PURSUE / UAP",
+        url: "https://www.war.gov/UFO/",
+        note: "Public U.S. UAP/UFO records.",
+      },
+    ],
   },
   {
     id: "chile-uap-2026-en",
@@ -143,6 +150,54 @@ export const englishBookPages: BookPage[] = [
       "In The Last Colony, Colchane does not prove the colony. It becomes another layer of the dossier: if something subterranean needed to cross the northern edge, it would choose a sky already full of surveillance, border logic, desert, and interpretable errors.",
     ],
     evidence: ["T13 / June 5, 2026", "Colchane", "+1,200 km/h", "SEFAA-DGAC"],
+    links: [
+      {
+        label: "T13 / Report",
+        url: "https://www.t13.cl/noticia/nacional/objetos-mas-1200-km-h-revelan-registros-militares-chile-fenomenos-aereos-anomalos-5-6-2026",
+        note: "Chilean military records and anomalous aerial phenomena.",
+      },
+      {
+        label: "SEFAA / DGAC",
+        url: "https://sefaa.dgac.gob.cl/",
+        note: "Chile's office for anomalous aerial phenomena studies.",
+      },
+      {
+        label: "DGAC / Investigative model",
+        url: "https://www.dgac.gob.cl/cefaa-un-modelo-investigativo-de-fenomenos-aereos-anomalos/",
+        note: "Institutional context for Chilean UAP/FANI research.",
+      },
+    ],
+  },
+  {
+    id: "war-worlds-iconography-en",
+    chapterId: "observadores",
+    kind: "evidence",
+    eyebrow: "Real iconography / public domain",
+    title: "Invasion was imagined before thermal cameras",
+    image: "/real/war-worlds-alvim-17.jpg",
+    mediaCaption:
+      "Henrique Alvim Corrêa illustration for the 1906 Belgian edition of The War of the Worlds: a Martian machine over the Thames.",
+    mediaCredit: "Henrique Alvim Corrêa / Wikimedia Commons / Public Domain Mark",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa,_print_version_17.jpg",
+    body: [
+      "Before modern radar and thermal cameras, science fiction had already drawn a collective anxiety: silent machines above human cities, impossible technologies seen from below, and a species convinced that danger came from the sky.",
+      "The book borrows that visual charge from The War of the Worlds, then reverses its direction. There are no Martian invaders descending here. There is an ancient terrestrial intelligence using our obsession with the sky as cultural camouflage.",
+      "The public image of the tripods becomes a mirror: when a threat feels too large to belong to Earth, humanity sends it into space. The Last Colony asks whether that reflex was always psychological protection.",
+    ],
+    evidence: ["Alvim Corrêa 1906", "Public domain", "Invasion iconography", "Reversed direction"],
+    links: [
+      {
+        label: "Wikimedia Commons",
+        url: "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa,_print_version_17.jpg",
+        note: "Public-domain illustration file.",
+      },
+      {
+        label: "Public Domain Review",
+        url: "https://publicdomainreview.org/collection/henrique-alvim-correa-war-of-the-worlds/",
+        note: "Collection of 1906 illustrations.",
+      },
+    ],
   },
   {
     id: "humanity-en",

@@ -213,6 +213,13 @@ export const bookPages: BookPage[] = [
       "La premisa ficticia es otra: los grises no serían naves ni visitantes, sino exploradores de una inteligencia terrestre anterior, confundidos con extraterrestres porque la humanidad no sabía mirar hacia abajo.",
     ],
     evidence: ["Archivo público real", "UAP no resuelto", "Ciencia ficción especulativa"],
+    links: [
+      {
+        label: "PURSUE / UAP",
+        url: "https://www.war.gov/UFO/",
+        note: "Archivo público de registros UAP/UFO de EE.UU.",
+      },
+    ],
   },
   {
     id: "chile-fani-2026",
@@ -231,6 +238,54 @@ export const bookPages: BookPage[] = [
       "En The Last Colony, Colchane no prueba la colonia. Funciona como una nueva capa del expediente: si algo subterráneo necesitara cruzar el borde norte, elegiría un cielo lleno de vigilancia, frontera, desierto y errores interpretables.",
     ],
     evidence: ["T13 / 5 junio 2026", "Colchane", "+1.200 km/h", "SEFAA-DGAC"],
+    links: [
+      {
+        label: "T13 / Reportaje",
+        url: "https://www.t13.cl/noticia/nacional/objetos-mas-1200-km-h-revelan-registros-militares-chile-fenomenos-aereos-anomalos-5-6-2026",
+        note: "Registros militares chilenos y fenómenos aéreos anómalos.",
+      },
+      {
+        label: "SEFAA / DGAC",
+        url: "https://sefaa.dgac.gob.cl/",
+        note: "Sección chilena para estudios de fenómenos aéreos anómalos.",
+      },
+      {
+        label: "DGAC / Modelo investigativo",
+        url: "https://www.dgac.gob.cl/cefaa-un-modelo-investigativo-de-fenomenos-aereos-anomalos/",
+        note: "Contexto institucional chileno sobre FANI.",
+      },
+    ],
+  },
+  {
+    id: "guerra-mundos-iconografia",
+    chapterId: "observadores",
+    kind: "evidence",
+    eyebrow: "Iconografía real / dominio público",
+    title: "La invasión imaginada antes de las cámaras térmicas",
+    image: "/real/war-worlds-alvim-17.jpg",
+    mediaCaption:
+      "Ilustración de Henrique Alvim Corrêa para la edición belga de 1906 de The War of the Worlds: máquina marciana sobre el Támesis.",
+    mediaCredit: "Henrique Alvim Corrêa / Wikimedia Commons / Public Domain Mark",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa,_print_version_17.jpg",
+    body: [
+      "Antes del radar moderno y las cámaras térmicas, la ciencia ficción ya había dibujado una ansiedad colectiva: máquinas silenciosas sobre ciudades humanas, tecnologías imposibles vistas desde abajo y una especie convencida de que el peligro venía del cielo.",
+      "El libro toma esa energía visual de La guerra de los mundos, pero invierte su dirección. Aquí no hay invasores marcianos descendiendo. Hay una inteligencia terrestre antigua usando nuestra obsesión con el cielo como camuflaje cultural.",
+      "La imagen pública de los trípodes sirve como espejo: si una amenaza parece demasiado grande para venir de la Tierra, la humanidad la manda al espacio. The Last Colony pregunta si ese reflejo fue siempre una defensa psicológica.",
+    ],
+    evidence: ["Alvim Corrêa 1906", "Dominio público", "Iconografía de invasión", "Dirección invertida"],
+    links: [
+      {
+        label: "Wikimedia Commons",
+        url: "https://commons.wikimedia.org/wiki/File:The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa,_print_version_17.jpg",
+        note: "Archivo de la ilustración en dominio público.",
+      },
+      {
+        label: "Public Domain Review",
+        url: "https://publicdomainreview.org/collection/henrique-alvim-correa-war-of-the-worlds/",
+        note: "Colección de ilustraciones de 1906.",
+      },
+    ],
   },
   {
     id: "emilia-tomas",

@@ -361,6 +361,74 @@ a {
   background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.34));
 }
 
+.archive-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(23, 19, 13, 0.14);
+  background:
+    linear-gradient(90deg, rgba(140, 255, 213, 0.12), transparent 58%),
+    rgba(23, 19, 13, 0.04);
+  padding: 0.82rem 0.9rem;
+  color: rgba(23, 19, 13, 0.72);
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.archive-link::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: translateX(-110%);
+  animation: archive-scan 4.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.archive-link:hover {
+  border-color: rgba(23, 19, 13, 0.34);
+  color: #11100c;
+  transform: translateY(-1px);
+}
+
+.archive-link strong {
+  display: block;
+  font-family: var(--font-space), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.archive-link small {
+  display: block;
+  margin-top: 0.22rem;
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  opacity: 0.66;
+}
+
+.book-page-cover .archive-link,
+.book-page-manifesto .archive-link {
+  border-color: rgba(140, 255, 213, 0.22);
+  background:
+    linear-gradient(90deg, rgba(140, 255, 213, 0.12), transparent 58%),
+    rgba(255, 255, 255, 0.045);
+  color: rgba(242, 234, 217, 0.78);
+}
+
+.book-page-cover .archive-link:hover,
+.book-page-manifesto .archive-link:hover {
+  border-color: rgba(140, 255, 213, 0.42);
+  color: #f2ead9;
+}
+
 .book-spine {
   position: absolute;
   left: 50%;
@@ -427,6 +495,22 @@ a {
   }
   65% {
     transform: translate3d(2px, 2px, 0) scale(1.023);
+  }
+}
+
+@keyframes archive-scan {
+  0%,
+  42% {
+    transform: translateX(-110%);
+    opacity: 0;
+  }
+  52% {
+    opacity: 0.75;
+  }
+  70%,
+  100% {
+    transform: translateX(110%);
+    opacity: 0;
   }
 }
 

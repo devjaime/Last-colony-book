@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, Heart, Radar } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Heart, Radar } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { bookPages } from "@/data/book-pages";
 import { englishBookPages } from "@/data/book-pages-en";
@@ -87,6 +87,25 @@ function PageContent({ page, pageNumber, locale }: { page: BookPage; pageNumber:
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
+
+        {page.links ? (
+          <div className="archive-links mt-6">
+            <p className="font-space text-[0.58rem] uppercase tracking-[0.24em] text-stone-900/48">
+              {locale === "en" ? "Real records" : "Archivos reales"}
+            </p>
+            <div className="mt-3 grid gap-2">
+              {page.links.map((link) => (
+                <a key={link.url} href={link.url} target="_blank" rel="noreferrer" className="archive-link">
+                  <span>
+                    <strong>{link.label}</strong>
+                    {link.note ? <small>{link.note}</small> : null}
+                  </span>
+                  <ExternalLink size={15} />
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : null}
 
         {page.evidence ? (
           <div className="mt-auto pt-6">
