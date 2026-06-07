@@ -215,6 +215,24 @@ export const bookPages: BookPage[] = [
     evidence: ["Archivo público real", "UAP no resuelto", "Ciencia ficción especulativa"],
   },
   {
+    id: "chile-fani-2026",
+    chapterId: "observadores",
+    kind: "evidence",
+    eyebrow: "Anexo real / Chile 2026",
+    title: "Colchane entra al expediente",
+    image: "/visuals/chile-uap-radar.svg",
+    mediaCaption: "Visualización editorial inspirada en radar, cámara térmica y cielo fronterizo del norte de Chile.",
+    mediaCredit: "Reportajes T13; DGAC-SEFAA",
+    sourceUrl:
+      "https://www.t13.cl/noticia/nacional/objetos-mas-1200-km-h-revelan-registros-militares-chile-fenomenos-aereos-anomalos-5-6-2026",
+    body: [
+      "El 5 de junio de 2026, T13 publicó un reportaje sobre registros militares chilenos de fenómenos aéreos anómalos. La nota ubicó uno de los episodios recientes en Colchane, Región de Tarapacá, donde cámaras térmicas del Ejército registraron luces durante la madrugada.",
+      "El dato que vuelve útil esta noticia para la novela no es la palabra OVNI, sino el procedimiento: pilotos, cámaras, radar, reportes oficiales, ausencia de explicación inmediata y un organismo chileno, SEFAA/DGAC, que existe precisamente para ordenar ese ruido.",
+      "En The Last Colony, Colchane no prueba la colonia. Funciona como una nueva capa del expediente: si algo subterráneo necesitara cruzar el borde norte, elegiría un cielo lleno de vigilancia, frontera, desierto y errores interpretables.",
+    ],
+    evidence: ["T13 / 5 junio 2026", "Colchane", "+1.200 km/h", "SEFAA-DGAC"],
+  },
+  {
     id: "emilia-tomas",
     chapterId: "observadores",
     kind: "scene",

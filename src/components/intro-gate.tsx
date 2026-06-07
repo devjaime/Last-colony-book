@@ -91,6 +91,16 @@ export function IntroGate({ initialLocale }: { initialLocale: Locale }) {
               ? "A bilingual science-fiction dossier written by Jaime Hernandez, built from real impacts, declassified UAP culture, Chilean geology, and one forbidden hypothesis."
               : "Un expediente bilingüe de ciencia ficción escrito por Jaime Hernandez, construido desde impactos reales, cultura UAP desclasificada, geología chilena y una hipótesis prohibida."}
           </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.35, duration: 0.8 }}
+            className="mt-4 border-l border-amber-200/30 pl-4 font-space text-[0.68rem] uppercase tracking-[0.22em] text-amber-100/58"
+          >
+            {locale === "en"
+              ? "New appendix: Chilean anomalous aerial records, 2026"
+              : "Nuevo anexo: registros aéreos anómalos de Chile, 2026"}
+          </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

@@ -127,6 +127,24 @@ export const englishBookPages: BookPage[] = [
     evidence: ["Public record", "Unresolved UAP", "Speculative fiction"],
   },
   {
+    id: "chile-uap-2026-en",
+    chapterId: "observadores",
+    kind: "evidence",
+    eyebrow: "Real appendix / Chile 2026",
+    title: "Colchane enters the dossier",
+    image: "/visuals/chile-uap-radar.svg",
+    mediaCaption: "Editorial visualization inspired by radar, thermal cameras, and the northern Chilean border sky.",
+    mediaCredit: "Reportajes T13; DGAC-SEFAA",
+    sourceUrl:
+      "https://www.t13.cl/noticia/nacional/objetos-mas-1200-km-h-revelan-registros-militares-chile-fenomenos-aereos-anomalos-5-6-2026",
+    body: [
+      "On June 5, 2026, T13 published a report on Chilean military records of anomalous aerial phenomena. One recent episode was placed in Colchane, Tarapacá Region, where Army thermal cameras recorded lights during the early morning.",
+      "What matters for the novel is not the word UFO, but the procedure: pilots, cameras, radar, official reports, no immediate explanation, and a Chilean office, SEFAA/DGAC, created to organize that kind of noise.",
+      "In The Last Colony, Colchane does not prove the colony. It becomes another layer of the dossier: if something subterranean needed to cross the northern edge, it would choose a sky already full of surveillance, border logic, desert, and interpretable errors.",
+    ],
+    evidence: ["T13 / June 5, 2026", "Colchane", "+1,200 km/h", "SEFAA-DGAC"],
+  },
+  {
     id: "humanity-en",
     chapterId: "observadores",
     kind: "scene",

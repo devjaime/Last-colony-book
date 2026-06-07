@@ -1,0 +1,80 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="night" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(790 420) rotate(90) scale(700 980)">
+      <stop stop-color="#123D3D"/>
+      <stop offset="0.34" stop-color="#07171A"/>
+      <stop offset="1" stop-color="#020407"/>
+    </radialGradient>
+    <radialGradient id="thermal" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1072 390) rotate(90) scale(170 260)">
+      <stop stop-color="#FFE9A8"/>
+      <stop offset="0.22" stop-color="#D08F43"/>
+      <stop offset="0.56" stop-color="#26E0B9"/>
+      <stop offset="1" stop-color="#041012" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.76" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.18"/>
+      </feComponentTransfer>
+      <feBlend mode="overlay" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#night)"/>
+  <path d="M0 642C178 560 338 520 496 556C654 592 724 694 884 708C1082 726 1246 586 1600 604V1000H0V642Z" fill="#071012"/>
+  <path d="M0 707C206 624 372 624 534 682C698 740 798 816 1008 768C1194 725 1365 646 1600 692V1000H0V707Z" fill="#030708"/>
+  <path d="M0 790C198 746 390 762 552 824C706 884 861 886 1012 820C1194 740 1382 739 1600 794V1000H0V790Z" fill="#020407"/>
+
+  <g opacity="0.44" stroke="#8CFFD5" stroke-width="1">
+    <circle cx="1054" cy="388" r="96"/>
+    <circle cx="1054" cy="388" r="178"/>
+    <circle cx="1054" cy="388" r="260"/>
+    <path d="M1054 112V664"/>
+    <path d="M778 388H1330"/>
+    <path d="M859 193L1249 583"/>
+    <path d="M1249 193L859 583"/>
+  </g>
+
+  <g opacity="0.26" stroke="#D08F43" stroke-width="2">
+    <path d="M214 148H1392"/>
+    <path d="M214 208H1392"/>
+    <path d="M214 268H1392"/>
+    <path d="M214 328H1392"/>
+    <path d="M214 388H1392"/>
+    <path d="M214 448H1392"/>
+    <path d="M214 508H1392"/>
+    <path d="M214 568H1392"/>
+  </g>
+
+  <g filter="url(#glow)">
+    <circle cx="958" cy="342" r="8" fill="#F4E4B8"/>
+    <circle cx="1046" cy="382" r="11" fill="#F4E4B8"/>
+    <circle cx="1142" cy="332" r="8" fill="#F4E4B8"/>
+    <path d="M958 342L1046 382L1142 332Z" stroke="#8CFFD5" stroke-width="3" stroke-dasharray="10 10"/>
+    <ellipse cx="1054" cy="388" rx="206" ry="132" fill="url(#thermal)" opacity="0.24"/>
+  </g>
+
+  <g opacity="0.92">
+    <path d="M286 816C342 766 408 752 470 782C521 807 548 856 604 856C669 856 692 790 760 766C858 731 968 780 1064 856C936 820 848 831 788 878C720 931 692 954 616 954C538 954 508 912 454 874C398 835 346 818 286 816Z" fill="#071E20"/>
+    <path d="M102 872C226 824 346 828 468 884C568 930 704 934 816 894C1014 824 1217 814 1498 874V1000H102V872Z" fill="#020407"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" letter-spacing="6" fill="#8CFFD5">
+    <text x="96" y="96" font-size="26" opacity="0.82">ARCHIVO FANI / CHILE NORTE</text>
+    <text x="96" y="142" font-size="16" opacity="0.48">COLCHANE · TARAPACÁ · CÁMARA TÉRMICA · RADAR</text>
+    <text x="1022" y="876" font-size="18" opacity="0.64">+1200 KM/H</text>
+    <text x="1022" y="910" font-size="13" opacity="0.42">VISUALIZACIÓN EDITORIAL</text>
+  </g>
+
+  <rect x="54" y="48" width="1492" height="904" stroke="#8CFFD5" stroke-opacity="0.16" stroke-width="2"/>
+  <rect x="82" y="76" width="1436" height="848" stroke="#D08F43" stroke-opacity="0.14" stroke-width="2"/>
+  <rect width="1600" height="1000" filter="url(#grain)" opacity="0.2"/>
+</svg>
