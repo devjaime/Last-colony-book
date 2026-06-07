@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
+import { ChevronLeft, ChevronRight, Heart, Radar } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { bookPages } from "@/data/book-pages";
 import { englishBookPages } from "@/data/book-pages-en";
@@ -139,6 +139,9 @@ export function BookReader({ initialLocale }: { initialLocale: Locale }) {
 
   const canGoBack = normalizedIndex > 0;
   const canGoNext = normalizedIndex + pageStep < pages.length;
+  const appendixPageIndex = pages.findIndex((page) =>
+    locale === "en" ? page.id === "chile-uap-2026-en" : page.id === "chile-fani-2026",
+  );
 
   useEffect(() => {
     if (currentPageIndex >= pages.length) {
@@ -251,6 +254,16 @@ export function BookReader({ initialLocale }: { initialLocale: Locale }) {
             <Heart size={15} />
             {locale === "en" ? "Voluntary support" : "Aporte voluntario"}
           </a>
+          {appendixPageIndex >= 0 ? (
+            <button
+              type="button"
+              onClick={() => setCurrentPageIndex(appendixPageIndex)}
+              className="inline-flex shrink-0 items-center justify-center gap-2 border border-emerald-200/30 bg-emerald-100/8 px-4 py-3 font-space text-[0.66rem] uppercase tracking-[0.22em] text-emerald-50 transition hover:border-emerald-100/65 hover:bg-emerald-100/14"
+            >
+              <Radar size={15} />
+              {locale === "en" ? "Chile 2026 appendix" : "Anexo Chile 2026"}
+            </button>
+          ) : null}
         </div>
 
         <div className="book-stage">
